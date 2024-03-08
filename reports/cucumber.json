@@ -3,7 +3,7 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2024-03-07T18:42:27.910Z",
+        "start_timestamp": "2024-03-08T08:15:23.460Z",
         "line": 5,
         "name": "VFC_Access for user with Viewer role",
         "description": "",
@@ -13,7 +13,7 @@
         "steps": [
           {
             "result": {
-              "duration": 5599751700,
+              "duration": 79149702100,
               "status": "passed"
             },
             "line": 6,
@@ -25,7 +25,7 @@
           },
           {
             "result": {
-              "duration": 1004200,
+              "duration": 1003600,
               "status": "passed"
             },
             "line": 7,
@@ -37,7 +37,7 @@
           },
           {
             "result": {
-              "duration": 949300,
+              "duration": 999800,
               "status": "passed"
             },
             "line": 8,
@@ -55,7 +55,6 @@
           },
           {
             "result": {
-              "duration": 993100,
               "status": "passed"
             },
             "line": 9,

@@ -18,12 +18,12 @@ public class lenskartHomePage extends BasePage{
 	}
 
 	public void moveLoginPage() {
-		// TODO Auto-generated method stub
+		System.out.println("moved to login page");
 		
 	}
 
 	public void login() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

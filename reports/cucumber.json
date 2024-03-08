@@ -1,0 +1,109 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2024-03-07T18:42:27.910Z",
+        "line": 5,
+        "name": "VFC_Access for user with Viewer role",
+        "description": "",
+        "id": "lenskart-feature;vfc-access-for-user-with-viewer-role",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5599751700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I launch the application url",
+            "match": {
+              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_launch_the_application_url()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1004200,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I move to login page",
+            "match": {
+              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_move_to_login_page()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 949300,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "\"user1\" logged in to the application",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"user1\"",
+                  "offset": 0
+                }
+              ],
+              "location": "com.qa.lenskart.stepdefinitions.lenskart.logged_in_to_the_application(java.lang.String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 993100,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I go to EyeWear Section",
+            "match": {
+              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_go_to_eye_wear_section()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I select rectangular frame",
+            "match": {
+              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_select_rectangular_frame()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@LenskartSanity"
+          },
+          {
+            "name": "@test1"
+          },
+          {
+            "name": "@smoke"
+          }
+        ]
+      }
+    ],
+    "name": "Lenskart feature",
+    "description": "",
+    "id": "lenskart-feature",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/com/qa/lenskart/features/lenskart.feature",
+    "tags": [
+      {
+        "name": "@LenskartSanity",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

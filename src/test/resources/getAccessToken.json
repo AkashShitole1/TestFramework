@@ -1,0 +1,14 @@
+{
+  "request": {
+    "path": "/auth",
+    "method": "post",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "username" : "admin",
+    "password" : "password123"
+      
+    }
+  }
+}

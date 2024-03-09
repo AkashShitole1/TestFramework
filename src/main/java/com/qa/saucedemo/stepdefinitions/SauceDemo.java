@@ -8,7 +8,8 @@ import com.qa.utils.ScenerioContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 public class SauceDemo extends BaseStepDefinations{
 	
 	

@@ -19,7 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.qa.saucedemo.driverfactory.driverFactory;
 
 import io.cucumber.java.Before;
-
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 public class BasePage {
 	
 	public WebDriver driver() {
@@ -109,6 +110,7 @@ public class BasePage {
 
 	}
 	public void getURL(String url) {
+		System.out.println(driver());
 		driver().get(url);
 	}
 

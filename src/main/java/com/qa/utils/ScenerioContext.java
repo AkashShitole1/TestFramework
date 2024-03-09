@@ -9,7 +9,8 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomUtils;
 
 import io.restassured.response.Response;
-
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 public class ScenerioContext {
 	private String scenarioName;
 	// Scenario key/test case id/QAGP Id

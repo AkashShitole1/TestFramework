@@ -3,82 +3,92 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2024-03-08T08:15:23.460Z",
+        "start_timestamp": "2024-03-08T18:15:23.631Z",
+        "before": [
+          {
+            "result": {
+              "duration": 1600621900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.qa.hooks.HooksUtil.setupDriver()"
+            }
+          }
+        ],
         "line": 5,
-        "name": "VFC_Access for user with Viewer role",
+        "name": "SauceDemo Login Feature",
         "description": "",
-        "id": "lenskart-feature;vfc-access-for-user-with-viewer-role",
+        "id": "lenskart-feature;saucedemo-login-feature",
+        "after": [
+          {
+            "result": {
+              "duration": 82549100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.qa.hooks.HooksUtil.closeDriver()"
+            }
+          }
+        ],
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 79149702100,
+              "duration": 1654939700,
               "status": "passed"
             },
             "line": 6,
-            "name": "I launch the application url",
+            "name": "user launch the saucedemo application[UI]",
             "match": {
-              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_launch_the_application_url()"
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.launchApplication()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 1003600,
+              "duration": 234881700,
               "status": "passed"
             },
             "line": 7,
-            "name": "I move to login page",
+            "name": "\"standard_user\" logged into the application with \"secret_sauce\"[UI]",
             "match": {
-              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_move_to_login_page()"
+              "arguments": [
+                {
+                  "val": "\"standard_user\"",
+                  "offset": 0
+                },
+                {
+                  "val": "\"secret_sauce\"",
+                  "offset": 49
+                }
+              ],
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.login(java.lang.String,java.lang.String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 999800,
+              "duration": 7008200,
               "status": "passed"
             },
             "line": 8,
-            "name": "\"user1\" logged in to the application",
+            "name": "I verify page title should be \"Swag Labs\"[UI]",
             "match": {
               "arguments": [
                 {
-                  "val": "\"user1\"",
-                  "offset": 0
+                  "val": "\"Swag Labs\"",
+                  "offset": 30
                 }
               ],
-              "location": "com.qa.lenskart.stepdefinitions.lenskart.logged_in_to_the_application(java.lang.String)"
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.verifyPageTitle(java.lang.String)"
             },
             "keyword": "Then "
-          },
-          {
-            "result": {
-              "status": "passed"
-            },
-            "line": 9,
-            "name": "I go to EyeWear Section",
-            "match": {
-              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_go_to_eye_wear_section()"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "status": "passed"
-            },
-            "line": 10,
-            "name": "I select rectangular frame",
-            "match": {
-              "location": "com.qa.lenskart.stepdefinitions.lenskart.i_select_rectangular_frame()"
-            },
-            "keyword": "And "
           }
         ],
         "tags": [
           {
-            "name": "@LenskartSanity"
+            "name": "@SauceDemoSanity"
           },
           {
             "name": "@test1"
@@ -93,10 +103,10 @@
     "description": "",
     "id": "lenskart-feature",
     "keyword": "Feature",
-    "uri": "file:src/test/java/com/qa/lenskart/features/lenskart.feature",
+    "uri": "file:src/test/java/com/qa/saucedemo/features/SauceDemo.feature",
     "tags": [
       {
-        "name": "@LenskartSanity",
+        "name": "@SauceDemoSanity",
         "type": "Tag",
         "location": {
           "line": 1,

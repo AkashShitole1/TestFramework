@@ -5,7 +5,8 @@ import com.jayway.jsonpath.Filter;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
-
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 public class RestClient {
 	Filter logFilter = null;
 

@@ -2,9 +2,10 @@ package com.qa.saucedemo.pages;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import lombok.extern.log4j.Log4j2;
 
 import static io.restassured.RestAssured.*;
-
+@Log4j2
 public class RestAssuredPage {
 
 	public void getAuthToken() {

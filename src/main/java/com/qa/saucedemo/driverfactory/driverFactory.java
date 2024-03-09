@@ -18,16 +18,27 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public enum driverFactory {
 	INSTANCE;
     public Properties prop;
-    public WebDriver driver;
+    
     public OptionsManager options;
     
-     public WebDriver getDriver() {
-    	 String driverName = initProperty().getProperty("driver"); 
-    	 System.out.println("driver is "+ driverName);
-    	 driver = initDriver(driverName);
-    	 return driver;
+    private final ThreadLocal<WebDriver> testContexts = new ThreadLocal<WebDriver>();
+
+	public synchronized WebDriver getDriver() {
+		return testContexts.get();
+	}
+
+	public synchronized void setDriver(WebDriver driver) {
+		testContexts.set(driver);
+	}
+    
+//     public WebDriver getDriver() {
+//    	 return driver;
+//    	 String driverName = initProperty().getProperty("driver"); 
+//    	 System.out.println("driver is "+ driverName);
+//    	 driver = initDriver(driverName);
+//    	 return driver;
     	 
-     }
+     
 
 	/**
 	 * this method is used to initialize the driver on the basis of given
@@ -36,7 +47,9 @@ public enum driverFactory {
 	 * @param prop
 	 * @return this returns driver
 	 */
-	public WebDriver initDriver(String driverName) {
+	public synchronized void  initDriver(String identificationKey) {
+		String driverName = initProperty().getProperty("driver"); 
+		WebDriver driver = null;
 		options = new OptionsManager(prop);
 		
 		if(driverName.equals("chrome")) {
@@ -55,7 +68,8 @@ public enum driverFactory {
 		driver.manage().timeouts().pageLoadTimeout(90,TimeUnit.SECONDS);
 		driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        return driver ;
+        System.out.println(driver);
+        setDriver(driver);
 	}
 	
 	public Properties initProperty() {

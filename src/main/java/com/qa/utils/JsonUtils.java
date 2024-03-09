@@ -19,8 +19,10 @@ import com.google.common.io.Files;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
+import lombok.extern.log4j.Log4j2;
 
 
+@Log4j2
 public class JsonUtils {
 	private ScenerioContext scenarioContext;
 

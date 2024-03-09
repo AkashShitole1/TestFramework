@@ -12,7 +12,8 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.EncoderConfig;
 import io.restassured.config.HeaderConfig;
 import io.restassured.http.ContentType;
-
+import lombok.extern.log4j.Log4j2;
+@Log4j2
 public class RequestBuilder {
 	private String httpMethod;
 

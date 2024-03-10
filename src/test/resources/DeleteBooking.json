@@ -1,0 +1,9 @@
+{
+  "request": {
+    "path": "/booking/${bookingid}",
+    "method": "Delete",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

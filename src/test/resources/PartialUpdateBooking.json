@@ -1,0 +1,13 @@
+{
+  "request": {
+    "path": "/booking/:id",
+    "method": "put",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "firstname" : "Ak",
+    "lastname" : "Sk"
+    }
+  }
+}

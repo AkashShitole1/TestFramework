@@ -8,41 +8,32 @@ import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class RestClient {
-	Filter logFilter = null;
 
-	public Response get(RequestSpecBuilder requestBuilder) {
-
-		final Response response = RestAssured.given(requestBuilder.build()).when().get();
-
+	public Response get(RequestSpecBuilder reqSpecBuilder) {
+		final Response response = RestAssured.given(reqSpecBuilder.build()).when().get();
 		return response;
 	}
 
-	public Response post(RequestSpecBuilder requestBuilder) {
-
-		final Response response = RestAssured.given(requestBuilder.build()).when().post();
-
+	public Response post(RequestSpecBuilder reqSpecBuilder) {
+		final Response response = RestAssured.given(reqSpecBuilder.build()).when().post();
 		return response;
 	}
 
-	public Response put(RequestSpecBuilder requestBuilder) {
-
-		final Response response = RestAssured.given(requestBuilder.build()).when().put();
-
+	public Response put(RequestSpecBuilder reqSpecBuilder) {
+		Response response = RestAssured.given(reqSpecBuilder.build()).when().post();
 		return response;
 	}
 
-	public Response delete(RequestSpecBuilder requestBuilder) {
-
-		final Response response = RestAssured.given(requestBuilder.build()).when().delete();
-
-		return response;
+	public Response delete(RequestSpecBuilder reqSpecBuilder) {
+		Response response = RestAssured.given(reqSpecBuilder.build()).when().delete();
+        return response;
 	}
 
-	public Response patch(RequestSpecBuilder requestBuilder) {
-
-		final Response response = RestAssured.given(requestBuilder.build()).when().patch();
-
+	public Response patch(RequestSpecBuilder reqSpecBuilder) {
+		Response response = RestAssured.given(reqSpecBuilder.build()).when().patch();
 		return response;
+		
 	}
+	
 
 }

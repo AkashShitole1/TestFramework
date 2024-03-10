@@ -1,0 +1,9 @@
+{
+  "request": {
+    "path": "/booking/${bookingid}",
+    "method": "get",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.ThreadContext;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.github.dockerjava.transport.DockerHttpClient.Request;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import com.qa.constants.HttpMethod;
@@ -21,47 +22,49 @@ import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BaseStepDefinations  {
+	protected JsonUtils stepUtil;
 	protected ScenerioContext scenarioContext = null;
-    JsonUtils stepUtil;
+   
 
 	public BaseStepDefinations(ScenerioContext scenarioContext) {
 		this.scenarioContext = scenarioContext;
+		stepUtil = new JsonUtils(scenarioContext);
 	}
 
 	public void callApiUsingFile(String requestFilePath, final String requestJsonPath) {
-		System.out.println(requestFilePath);
-		System.out.println("check");
-		final String requestDetails = stepUtil.getUpdatedJsonValueFromFile(requestFilePath, requestJsonPath);
-		System.out.println("");
-		callSerivceUsingRequest(requestDetails);
+		scenarioContext.set("accessToken", "akash");
+final String requestDetails = stepUtil.getUpdatedJsonValueFromFile(requestFilePath, requestJsonPath);
+
+         System.out.println("request details is" + requestDetails);
+		callApiService(requestDetails);
 
 	}
-
-	public void callSerivceUsingRequest(final String requestDetails) {
-		RequestBuilder request = new RequestBuilder();
-		RequestSpecBuilder requestSpecBuilder = request.buildRequest(requestDetails, scenarioContext, false);
-		final Response response = executeApiCall(request.getHttpMethod(), requestSpecBuilder);
+	public void callApiService(String requestDetails) {
+		RequestBuilder builder = new RequestBuilder();
+		RequestSpecBuilder reqSpecBuilder = builder.buildRequest(requestDetails);
+		final Response response = executeApi(builder.getHttpMethod(),reqSpecBuilder);
+		System.out.println("API is executed and the response is "+response.toString());
 		scenarioContext.setResponse(response);
+		
+		
 	}
 
-	public Response executeApiCall(String httpMethod, RequestSpecBuilder requestSpecBuilder) {
-		ThreadContext.put("logFileName", scenarioContext.getScenarioLogFileName());
+	private Response executeApi(String httpMethod, RequestSpecBuilder reqSpecBuilder) {
 		Response response = null;
-		RestClient restClient = new RestClient();
-		if (HttpMethod.GET.getMethod().equalsIgnoreCase(httpMethod)) {
-			response = restClient.get(requestSpecBuilder);
-		} else if (HttpMethod.POST.getMethod().equalsIgnoreCase(httpMethod)) {
-			response = restClient.post(requestSpecBuilder);
-		} else if (HttpMethod.PUT.getMethod().equalsIgnoreCase(httpMethod)) {
-			response = restClient.put(requestSpecBuilder);
-		} else if (HttpMethod.DELETE.getMethod().equalsIgnoreCase(httpMethod)) {
-			response = restClient.delete(requestSpecBuilder);
-		} else if (HttpMethod.PATCH.getMethod().equalsIgnoreCase(httpMethod)) {
-			response = restClient.patch(requestSpecBuilder);
-		}
-		return response;
+        RestClient restClient = new RestClient();
+        if (HttpMethod.GET.getMethod().equalsIgnoreCase(httpMethod)) {
+            response = restClient.get(reqSpecBuilder);
+        } else if (HttpMethod.POST.getMethod().equalsIgnoreCase(httpMethod)) {
+            response = restClient.post(reqSpecBuilder);
+        } else if (HttpMethod.PUT.getMethod().equalsIgnoreCase(httpMethod)) {
+            response = restClient.put(reqSpecBuilder);
+        } else if (HttpMethod.DELETE.getMethod().equalsIgnoreCase(httpMethod)) {
+            response = restClient.delete(reqSpecBuilder);
+        } else if (HttpMethod.PATCH.getMethod().equalsIgnoreCase(httpMethod)) {
+            response = restClient.patch(reqSpecBuilder);
+        }
+        return response;
 	}
-	
-	
+
 
 }

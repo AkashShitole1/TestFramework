@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(features = { "src\\test\\java\\com\\qa\\saucedemo\\features"}, glue = {
 		"com/qa/saucedemo/stepdefinitions","com/qa/hooks" }, plugin = { "pretty",
 				"html:reports/cucumber-default-report/cucumber.html", "json:reports/cucumber.json", "junit:reports/cucumber.xml" }, monochrome = true, dryRun = false, 
-				tags = "(@Test-CreateBooking)"
+				tags = "(@test1)"
 				)
 
 public class LocalRunner {

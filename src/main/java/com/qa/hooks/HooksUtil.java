@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.saucedemo.driverfactory.driverFactory;
+import com.qa.utils.ScenerioContext;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -19,7 +20,8 @@ public class HooksUtil {
 	
 	@After
 	public void closeDriver(){
-		driverFactory.INSTANCE.getDriver().close();
+		driverFactory.INSTANCE.getDriver().quit();;
+		
 		
 	}
 

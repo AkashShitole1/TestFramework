@@ -1,13 +1,13 @@
 [
   {
-    "line": 1,
+    "line": 2,
     "elements": [
       {
-        "start_timestamp": "2024-03-10T18:16:27.865Z",
+        "start_timestamp": "2024-03-11T19:06:00.663Z",
         "before": [
           {
             "result": {
-              "duration": 2016140800,
+              "duration": 2862129400,
               "status": "passed"
             },
             "match": {
@@ -15,14 +15,14 @@
             }
           }
         ],
-        "line": 18,
-        "name": "create new booking",
+        "line": 5,
+        "name": "SauceDemo Login Feature",
         "description": "",
-        "id": "this-feature-test-all-the-apis-of-restfulbooker;create-new-booking",
+        "id": "lenskart-feature;saucedemo-login-feature",
         "after": [
           {
             "result": {
-              "duration": 152650500,
+              "duration": 306305300,
               "status": "passed"
             },
             "match": {
@@ -35,136 +35,84 @@
         "steps": [
           {
             "result": {
-              "duration": 2681754900,
+              "duration": 5195305000,
               "status": "passed"
             },
-            "line": 19,
-            "name": "I call \"create new booking\" api using file \"CreateBooking.json\"",
+            "line": 6,
+            "name": "user launch the saucedemo application[UI]",
+            "match": {
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.launchApplication()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 388310800,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "\"standard_user\" logged into the application with \"secret_sauce\"[UI]",
             "match": {
               "arguments": [
                 {
-                  "val": "\"create new booking\"",
-                  "offset": 7
+                  "val": "\"standard_user\"",
+                  "offset": 0
                 },
                 {
-                  "val": "\"CreateBooking.json\"",
-                  "offset": 43
+                  "val": "\"secret_sauce\"",
+                  "offset": 49
                 }
               ],
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.i_call_api_using_file(java.lang.String,java.lang.String)"
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.login(java.lang.String,java.lang.String)"
             },
             "keyword": "When "
           },
           {
             "result": {
+              "duration": 14001900,
               "status": "passed"
             },
-            "line": 20,
-            "name": "The response status should be 200",
+            "line": 8,
+            "name": "I verify page title should be \"Swag Labs\"[UI]",
             "match": {
               "arguments": [
                 {
-                  "val": "200",
+                  "val": "\"Swag Labs\"",
                   "offset": 30
                 }
               ],
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.the_response_status_should_be(int)"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 820560400,
-              "status": "passed"
-            },
-            "line": 21,
-            "name": "I store response fields value to below variables",
-            "match": {
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.assignValues(io.cucumber.datatable.DataTable)"
-            },
-            "rows": [
-              {
-                "cells": [
-                  "bookingid"
-                ]
-              },
-              {
-                "cells": [
-                  "bookingid"
-                ]
-              }
-            ],
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "status": "passed"
-            },
-            "line": 24,
-            "name": "I print the value of \"${bookingid}\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"${bookingid}\"",
-                  "offset": 21
-                }
-              ],
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.getValueFromContext(java.lang.String)"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 1408523300,
-              "status": "passed"
-            },
-            "line": 26,
-            "name": "I call \"get created booking\" api using file \"GetBooking.json\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"get created booking\"",
-                  "offset": 7
-                },
-                {
-                  "val": "\"GetBooking.json\"",
-                  "offset": 44
-                }
-              ],
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.i_call_api_using_file(java.lang.String,java.lang.String)"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "status": "passed"
-            },
-            "line": 27,
-            "name": "The response status should be 200",
-            "match": {
-              "arguments": [
-                {
-                  "val": "200",
-                  "offset": 30
-                }
-              ],
-              "location": "com.qa.saucedemo.stepdefinitions.ApiStepDefinations.the_response_status_should_be(int)"
+              "location": "com.qa.saucedemo.stepdefinitions.SauceDemo.verifyPageTitle(java.lang.String)"
             },
             "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "name": "@Test-CreateBooking"
+            "name": "@SauceDemoSanity"
+          },
+          {
+            "name": "@test1"
+          },
+          {
+            "name": "@smoke"
           }
         ]
       }
     ],
-    "name": "this feature test all the apis of restfulbooker",
+    "name": "Lenskart feature",
     "description": "",
-    "id": "this-feature-test-all-the-apis-of-restfulbooker",
+    "id": "lenskart-feature",
     "keyword": "Feature",
-    "uri": "file:src/test/java/com/qa/saucedemo/features/Restassured.feature",
-    "tags": []
+    "uri": "file:src/test/java/com/qa/saucedemo/features/SauceDemo.feature",
+    "tags": [
+      {
+        "name": "@SauceDemoSanity",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
   }
 ]

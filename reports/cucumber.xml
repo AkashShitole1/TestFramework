@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.443">
-    <testcase classname="this feature test all the apis of restfulbooker" name="create new booking" time="7.187">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="9.05">
+    <testcase classname="Lenskart feature" name="SauceDemo Login Feature" time="8.835">
         <system-out>
-            <![CDATA[When I call "create new booking" api using file "CreateBooking.json"........passed
-Then The response status should be 200......................................passed
-Then I store response fields value to below variables.......................passed
-Then I print the value of "${bookingid}"....................................passed
-When I call "get created booking" api using file "GetBooking.json"..........passed
-Then The response status should be 200......................................passed
+            <![CDATA[Given user launch the saucedemo application[UI].............................passed
+When "standard_user" logged into the application with "secret_sauce"[UI]....passed
+Then I verify page title should be "Swag Labs"[UI]..........................passed
 ]]>
         </system-out>
     </testcase>

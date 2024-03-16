@@ -22,6 +22,5 @@ Then I store response fields value to below variables
 |bookingid|
 |bookingid|
 Then I print the value of "${bookingid}"
- 
-When I call "get created booking" api using file "GetBooking.json"
+ When I call "get created booking" api using file "GetBooking.json"
 Then The response status should be 200

@@ -9,14 +9,18 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.saucedemo.driverfactory.driverFactory;
+import com.qa.utils.Enum.KeyboardKeys;
 
 import io.cucumber.java.Before;
 import lombok.extern.log4j.Log4j2;
@@ -207,5 +211,183 @@ public class BasePage {
 		return pro.getProperty(locatorKey);
 		
 	}
+	
+	protected void switchToMainWindow() {
+		driver().switchTo().window(driver().getWindowHandle());
+	}
+
+	protected void switchToDefaultContent() {
+		driver().switchTo().defaultContent();
+	}
+	/**
+	 * Wait for frame with given frame by to be available. Once it is available then
+	 * switch back to main content/frame.
+	 *
+	 * @param by By to find frame element
+	 * @return if switched successfully to main content else false
+	 */
+	public boolean waitForFrameToBeAvailable(By by) {
+		
+		try {
+			getFluentWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(by));
+			
+			switchToDefaultContent();
+			
+			return true;
+		} catch (Exception excp) {
+			return false;
+		}
+	}
+	/**
+	 * Wait for frame with given nameOrID to be available. Once it is available then
+	 * switch back to main content/frame.
+	 *
+	 * @param nameOrID Frame element
+	 * @return if switched successfully to main content else false
+	 */
+	public boolean waitForFrameToBeAvailable(final String nameOrID) {
+		
+		try {
+			getFluentWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(nameOrID));
+			switchToDefaultContent();
+			return true;
+		} catch (Exception excp) {
+			return false;
+		}
+	}
+	/**
+	 * Wait for frame with given index to be available. Once it is available then
+	 * switch back to main content/frame.
+	 *
+	 * @param index Frame element
+	 * @return if switched successfully to main content else false
+	 */
+	public boolean waitForFrameToBeAvailable(final int index) {
+		try {
+			getFluentWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(index));
+			switchToDefaultContent();
+			return true;
+		} catch (Exception excp) {
+			return false;
+		}
+	}
+	/**
+	 * Switch to frame with given index.
+	 *
+	 * @param index Frame index
+	 */
+	public void switchToFrame(int index) {
+		waitForFrameToBeAvailable(index);
+		driver().switchTo().frame(index);
+	}
+
+	/**
+	 * Switch to frame with given name or id.
+	 * 
+	 * @param nameOrId Frame name or id
+	 */
+	public void switchToFrame(String nameOrId) {
+		driver().switchTo().frame(nameOrId);
+	}
+
+	/**
+	 * Switch to frame.
+	 *
+	 * @param by By to find frame element
+	 */
+	protected void switchToFrame(By by) {
+		waitForFrameToBeAvailable(by);
+		driver().switchTo().frame(findElement(by));
+	}
+	
+	public void selectDropdownByVisibleText(WebElement element, String text) {
+		Select select = new Select(element);
+		select.selectByVisibleText(text);
+	}
+
+	protected void selectDropdownByText(By by, String text) {
+		WebElement element = findElement(by);
+		Select select = new Select(element);
+		select.selectByVisibleText(text);
+	}
+	
+	protected void selectDropdownByPartialText(By by, String partialText) {
+		WebElement element = findElement(by);
+		Select select = new Select(element);
+		List<WebElement> options = select.getOptions();
+		for (WebElement option : options) {
+			if (option.getText().contains(partialText)) {
+				option.click();
+				break;
+			}
+		}
+	}
+	protected void selectDropdownByValue(By by, String value) {
+		WebElement element = findElement(by);
+		Select select = new Select(element);
+		select.selectByValue(value);
+	}
+	public void pressKey(final WebElement element, final KeyboardKeys keyboardKey) {
+		switch (keyboardKey) {
+			case BACK_SPACE:
+				element.sendKeys(Keys.BACK_SPACE);
+				break;
+			case ENTER:
+				element.sendKeys(Keys.ENTER);
+				break;
+			case ESCAPE:
+				element.sendKeys(Keys.ESCAPE);
+				break;
+			case DELETE:
+				element.sendKeys(Keys.DELETE);
+				break;
+			case SPACE:
+				element.sendKeys(Keys.SPACE);
+				break;
+			case TAB:
+				element.sendKeys(Keys.TAB);
+				break;
+			case F5:
+				element.sendKeys(Keys.F5);
+				break;
+		}
+	}
+
+	/**
+	 * Used to press key on given element using action class.
+	 *
+	 * @param element     Element to press key
+	 * @param keyboardKey Key to be pressed
+	 */
+	public void pressKeyUsingActionObject(final WebElement element, final KeyboardKeys keyboardKey) {
+		Actions actionsObj = new Actions(driver());
+		switch (keyboardKey) {
+			case BACK_SPACE:
+				actionsObj.moveToElement(element).sendKeys(Keys.BACK_SPACE).build().perform();
+				break;
+			case ENTER:
+				actionsObj.moveToElement(element).sendKeys(Keys.ENTER).build().perform();
+				break;
+			case ESCAPE:
+				actionsObj.moveToElement(element).sendKeys(Keys.ESCAPE).build().perform();
+				break;
+			case DELETE:
+				actionsObj.moveToElement(element).sendKeys(Keys.DELETE).build().perform();
+				break;
+			case SPACE:
+				actionsObj.moveToElement(element).sendKeys(Keys.SPACE).build().perform();
+				break;
+			case TAB:
+				actionsObj.moveToElement(element).sendKeys(Keys.TAB).build().perform();
+				break;
+			case F5:
+				actionsObj.moveToElement(element).sendKeys(Keys.F5).build().perform();
+				break;
+			case END:
+				actionsObj.moveToElement(element).sendKeys(Keys.END).build().perform();
+				break;
+		}
+	}
+
 
 }

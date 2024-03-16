@@ -160,8 +160,33 @@
 					<includes>
 						<exclude>**/*LocalRunner.java</exclude>
 					</includes>
-					
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.7.8</version>
+                <executions>
+					<execution>
+						<id>execution
+						</id>
+						<phase>verify</phase>
+					<goals>
+						<goal>generate</goal>
+					</goals>
+					<configuration>
+						<projectName>AkashHybrid</projectName>
+						<outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+						<outputDirectory>${project.build.directory}</outputDirectory>
+				<jsonFiles>
+					<param>**/cucumber.json</param>
+				</jsonFiles>
+					</configuration>
+					</execution>
+				</executions>
+				
 			</plugin>
 			
 		
